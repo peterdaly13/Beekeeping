@@ -9,10 +9,11 @@ public class User {
     String pswd; // look into other classes for password handling
     Image profilePic;
     Apiary apiary;
-    String phone;
+    String phoneNumber;
     String email;
 
     User(String name, String pswd) {
+        generateId();
         this.name = name;
         this.pswd = pswd;
     }
@@ -29,7 +30,27 @@ public class User {
         return this.id;
     }
 
+    void generateId() {
+        this.id = 0; //TODO
+    }
+
     void deleteUser() {
-        // how do we want to go about deleting users?
+        // TODO
+    }
+
+    String getEmail() {
+        return this.email;
+    }
+
+    void setEmail(String email) {
+        this.email = email;
+    }
+
+    String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+
+    void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
