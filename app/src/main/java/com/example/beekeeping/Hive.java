@@ -11,7 +11,6 @@ public class Hive {
     public String gains;
 
     public Hive(){
-
     }
 
     public Hive(String inspectionResults, String health, String honeyStores, String queenProduction,

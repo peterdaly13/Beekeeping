@@ -1,14 +1,18 @@
 package com.example.beekeeping;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Apiary {
-        private int aid;
-        private int numHives;
-        private ArrayList<Hive> hives;
+        public int aid;
+        public List<Hive> hives;
+
+        public Apiary(int aid) {
+            hives = new ArrayList<Hive>();
+            generateAID();
+        }
 
         public Apiary() {
-            hives = new ArrayList<Hive>();
         }
 
         public int getAid() {
@@ -19,19 +23,15 @@ public class Apiary {
             this.aid = aid;
         }
 
-        public int getNumHives() {
-            return numHives;
-        }
-
-        public void setNumHives(int numHives) {
-            this.numHives = numHives;
-        }
-
-        public ArrayList<Hive> getHives() {
+        public List<Hive> getHives() {
             return hives;
         }
 
         public void setHives(ArrayList<Hive> hives) {
             this.hives = hives;
+        }
+
+        private void generateAID() {
+            this.aid = 0; //TODO
         }
 }

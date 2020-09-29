@@ -4,18 +4,20 @@ import android.media.Image;
 
 // Each beekeeper is represented as a user
 public class User {
-    int id;
-    String name;
-    String pswd; // look into other classes for password handling
-    Image profilePic;
-    Apiary apiary;
-    String phoneNumber;
-    String email;
+    public int id;
+    public String name;
+    public String pswd; // look into other classes for password handling
+    public Image profilePic;
+    public Apiary apiary;
+    public String phoneNumber;
+    public String email;
 
-    User(String name, String pswd) {
+    public User(String name, String pswd) {
         generateId();
         this.name = name;
         this.pswd = pswd;
+    }
+    public User() {
     }
 
     String getName() {
