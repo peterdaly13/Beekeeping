@@ -27,6 +27,7 @@ android {
 dependencies {
     // add SDKs for desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
+    implementation 'com.google.firebase:firebase-database:19.4.0'
 
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
