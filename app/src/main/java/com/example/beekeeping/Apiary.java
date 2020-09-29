@@ -3,34 +3,64 @@ package com.example.beekeeping;
 import java.util.ArrayList;
 
 public class Apiary {
-        private int aid;
-        private int numHives;
-        private ArrayList<Hive> hives;
+    private int aid;
+    private int numHives;
+    private ArrayList<Hive> hives;
 
-        public Apiary() {
-            hives = new ArrayList<Hive>();
+    /**
+     * constructor
+     * @param id of the apiary
+     */
+    public Apiary(int id) {
+        this.aid = id;
+        numHives = 0;
+        hives = new ArrayList<Hive>();
         }
 
-        public int getAid() {
-            return aid;
-        }
+    /**
+     * getter
+     * @return aid apiary id
+     */
+    public int getAid() {
+        return aid;
+    }
 
-        public void setAid(int aid) {
-            this.aid = aid;
-        }
+    /**
+     * mutator
+     * @param aid set the apiary id to aid
+     */
+    public void setAid(int aid) {
+        this.aid = aid;
+    }
 
-        public int getNumHives() {
-            return numHives;
-        }
+    /**
+     * getter
+     * @return number of hives
+     */
+    public int getNumHives() {
+        return numHives;
+    }
 
-        public void setNumHives(int numHives) {
-            this.numHives = numHives;
-        }
+    /**
+     * mutator
+     * @param numHives set the number of hives
+     */
+    public void setNumHives(int numHives) {
+        this.numHives = numHives;
+    }
 
-        public ArrayList<Hive> getHives() {
-            return hives;
-        }
+    /**
+     * getter
+     * @return hives a array list of hives
+     */
+    public ArrayList<Hive> getHives() {
+        return hives;
+    }
 
+    /**
+     * mutator
+     * @param hives give the value of a hive array list to the field hives
+     */
         public void setHives(ArrayList<Hive> hives) {
             this.hives = hives;
         }
