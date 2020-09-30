@@ -2,9 +2,10 @@ package com.example.beekeeping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Apiary {
-        public int aid;
+        public String aid;
         public List<Hive> hives;
 
         public Apiary() {
@@ -12,9 +13,9 @@ public class Apiary {
             generateAID();
         }
 
-        public int getAid() { return aid; }
+        public String getAid() { return aid; }
 
-        public void setAid(int aid) { this.aid = aid; }
+        //public void setAid(int aid) { this.aid = aid; }
 
         public List<Hive> getHives() { return hives; }
 
@@ -27,7 +28,7 @@ public class Apiary {
         }
 
         private void generateAID() {
-            this.aid = 0; //TODO
+            this.aid = UUID.randomUUID().toString();
         }
 
 
