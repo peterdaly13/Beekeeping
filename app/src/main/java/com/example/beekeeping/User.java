@@ -7,10 +7,11 @@ public class User {
     public int id;
     public String name;
     public String pswd; // look into other classes for password handling
-    public Image profilePic;
-    public Apiary apiary;
     public String phoneNumber;
     public String email;
+    public Image profilePic;
+    public Apiary apiary;
+
 
     public User(String name, String pswd) {
         generateId();
@@ -33,11 +34,11 @@ public class User {
     }
 
     void generateId() {
-        this.id = 0; //TODO
+        this.id = 0; //TODO generate unique id
     }
 
     void deleteUser() {
-        // TODO
+        // TODO make UserList class and implement deleteUser there
     }
 
     String getEmail() {
