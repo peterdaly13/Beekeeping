@@ -9,7 +9,7 @@ public class Apiary {
         public List<Hive> hives;
 
         public Apiary() {
-            hives = new ArrayList<Hive>();
+            hives = new ArrayList<>();
             generateAID();
         }
 
