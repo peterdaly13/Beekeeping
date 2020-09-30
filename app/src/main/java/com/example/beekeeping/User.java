@@ -10,7 +10,7 @@ public class User {
     public String phoneNumber;
     public String email;
     public Image profilePic;
-    public Apiary apiary;
+    public Apiary apiary; //Can be implemented as an arrayList since beekeepers can have mutiple Apiaries
 
 
     public User(String name, String pswd) {
