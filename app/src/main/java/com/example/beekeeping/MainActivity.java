@@ -2,6 +2,8 @@ package com.example.beekeeping;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     public DatabaseReference mDatabase;
     Button button;
+    Button launch_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("Pull", u.toString() );
 
 
+            }
+        });
+
+        launch_login = (Button) findViewById(R.id.launch_login);
+        launch_login.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FirebaseUIActivity.class);
+                startActivity(intent);
             }
         });
 
