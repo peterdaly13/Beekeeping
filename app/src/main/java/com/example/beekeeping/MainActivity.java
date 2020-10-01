@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 /*
-                 * Below are ways to write a message to the firbase database
+                 * Below are ways to write a message to the firebase database
                  * and to read a message from the database
                  */
                 // [START write_message]
