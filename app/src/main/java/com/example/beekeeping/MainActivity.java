@@ -2,6 +2,7 @@ package com.example.beekeeping;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
 import android.util.Log;
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -31,10 +31,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
         button = (Button) findViewById(R.id.Button);
-        button.setOnClickListener(new View.OnClickListener() {
 
+        button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 /*
                 User user1 = new User("Ted", "123");
@@ -48,23 +47,61 @@ public class MainActivity extends AppCompatActivity {
                 user1.addApiary(a);
                 user1.addApiary(b);
                 pushData(user1);*/
-                User u = pullData(5555 , "return");
-                Log.i("Pull", u.toString() );
-
+                final User[] u = {null};
+               // DataCallback dbc = null;
+                pullData(new DataCallback() {
+                    @Override
+                    public void onCallback(User value) {
+                        Log.d("pull", value.toString());
+                    }
+                }, 5555);
 
             }
         });
+    }
+
+    //int uID, final String action
+    private void pullData(final DataCallback dbc, final int uid) {
+        // Somehow this allows the action String to work as intended
+
+        DatabaseReference qReference = mDatabase.child("users").child(Integer.toString(uid));
+        Log.d("Fetch", qReference.toString());
+        //        final ArrayList<User> uList = new ArrayList<User>();
+        //        uList.add(null);
+
+        // The onDataChange will be called once to perform an action, and then once again if the
+        // data was changed. The action var is set to "" so that no action repeats in one call of
+        //
+        //User user;
+        qReference.child(String.format("users/%s", uid));
+        qReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User value = dataSnapshot.getValue(User.class);
+                dbc.onCallback(value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting User failed, log a message
+                Log.w("PullData", "Failed to Load User from Firebase", databaseError.toException());
+            }
+        });
+        // Use the uID to access the correct user
 
 
 
 
     }
 
-    private void pushData(User user){
+
+
+
+    private void pushData(User user) {
         // A HashMap is used to upload information to firebase, the String is the location in
         // firebase and the Object is the SongQueue to be put in firebase
         HashMap<String, Object> map = new HashMap<>();
-        String folder = "/users/"+ Integer.toString(user.getId());
+        String folder = "/users/" + Integer.toString(user.getId());
         map.put(folder, user);
         mDatabase.updateChildren(map)
                 .addOnFailureListener(new OnFailureListener() {
@@ -75,51 +112,11 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    private User pullData(int uID, final String action) {
-        // Somehow this allows the action String to work as intented
-        final String[] actionRef = {action};
-        // Use the partyLeaderID to access the correct database
-        DatabaseReference qReference = mDatabase.child("users").child(Integer.toString(uID));
-        final ArrayList<User> uList = new ArrayList<User>();
-        uList.add(null);
-        // The onDataChange will be called once to perform an action, and then once again if the
-        // data was changed. The action var is set to "" so that no action repeats in one call of
-        // pullData
-        ValueEventListener postListener = new ValueEventListener() {
 
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get the User from Firebase
-                User user = dataSnapshot.getValue(User.class);
-                user = dataSnapshot.getValue(User.class);
-
-                if (user != null) {
-                    Log.i("User" , "Not null");
-                    // Perform the desired action
-                    if (actionRef[0].equals("return")) {
-                        uList.add(user);
-                    }
-                }
-                else{
-                    Log.i("User" , "Null");
-                }
-                // Set action to "" so that the action doesn't repeat
-                actionRef[0] ="";
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting SongQueue failed, log a message
-                Log.w("PullData", "Failed to Load User from Firebase", databaseError.toException());
-            }
-        };
-        qReference.addValueEventListener(postListener);
-        uList.remove(0);
-        return uList.get(0);
-    }
 
 
 }
+
+
 
 
