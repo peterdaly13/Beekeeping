@@ -29,6 +29,15 @@ dependencies {
     // https://firebase.google.com/docs/android/setup#available-libraries
     implementation 'com.google.firebase:firebase-database:19.4.0'
 
+    implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
+
+//    // Required only if Facebook login support is required
+//    // Find the latest Facebook SDK releases here: https://goo.gl/Ce5L94
+//    implementation 'com.facebook.android:facebook-android-sdk:4.x'
+//
+//    // Required only if Twitter login support is required
+//    // Find the latest Twitter SDK releases here: https://goo.gl/E5wZvQ
+//    implementation 'com.twitter.sdk.android:twitter-core:3.x'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
