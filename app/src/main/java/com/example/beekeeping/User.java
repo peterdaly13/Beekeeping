@@ -1,6 +1,8 @@
 package com.example.beekeeping;
 
 import android.media.Image;
+import java.util.ArrayList;
+import java.util.List;
 
 // Each beekeeper is represented as a user
 public class User {
@@ -10,13 +12,14 @@ public class User {
     public String phoneNumber;
     public String email;
     public Image profilePic;
-    public Apiary apiary; //Can be implemented as an arrayList since beekeepers can have multiple Apiaries
+    public List <Apiary> apiaryList; //Can be implemented as an arrayList since beekeepers can have mutiple Apiaries
 
 
     public User(String name, String pswd) {
         generateId();
         this.name = name;
         this.pswd = pswd;
+        this.apiaryList = new ArrayList<Apiary>();
     }
     public User() {
     }
@@ -34,11 +37,15 @@ public class User {
     }
 
     void generateId() {
-        this.id = 0; //TODO generate unique id
+        this.id = 5555; //TODO generate unique id
     }
 
     void deleteUser() {
         // TODO make UserList class and implement deleteUser there
+    }
+
+    public void addApiary(Apiary a){
+        apiaryList.add(a);
     }
 
     String getEmail() {
@@ -55,5 +62,18 @@ public class User {
 
     void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", pswd='" + pswd + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", profilePic=" + profilePic +
+                ", apiaryList=" + apiaryList +
+                '}';
     }
 }

@@ -8,33 +8,43 @@ public class Apiary {
     public int aid;
     public List<Hive> hives;
 
+    public Apiary(int aid) {
+        this.hives = new ArrayList<Hive>();
+        this.aid = aid;
+    }
+
     public Apiary() {
-        hives = new ArrayList<>();
-        generateAID();
-    }
-
-    public Apiary(int id) {
-        hives = new ArrayList<>();
-        this.aid = id;
-    }
-
-        public int getAid() { return aid; }
-
-        //public void setAid(int aid) { this.aid = aid; }
-
-        public List<Hive> getHives() { return hives; }
-
-        public void setHives(ArrayList<Hive> hives) { this.hives = hives; }
-
-        public String toString(){
-            //String info = "Apiary #" + aid + "manages the following hives: \n";
-            String info = "Apiary #" + aid + "manages " + hives.size() + " hives.";
-            return info;
-        }
-
-        private void generateAID() {
-            //this.aid = UUID.randomUUID().toString();//TODO
-        }
-
 
     }
+
+
+    public int getAid() {
+        return aid;
+    }
+
+    //public void setAid(int aid) { this.aid = aid; }
+
+    public List<Hive> getHives() {
+        return hives;
+    }
+
+    public void setHives(ArrayList<Hive> hives) {
+        this.hives = hives;
+    }
+
+    public void addHive(Hive h){
+        hives.add(h);
+    }
+
+    public String toString() {
+        //String info = "Apiary #" + aid + "manages the following hives: \n";
+        String info = "Apiary #" + aid + "manages " + hives.size() + " hives.";
+        return info;
+    }
+
+    private void generateAID() {
+        //this.aid = UUID.randomUUID().toString();//TODO
+    }
+
+
+}
