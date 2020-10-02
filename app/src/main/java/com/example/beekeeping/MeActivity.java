@@ -27,11 +27,15 @@ public class MeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_me);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser FBuser = FirebaseAuth.getInstance().getCurrentUser();
+
+        // if new user, push new user data to DB
+
+
         TextView displayName = findViewById(R.id.display_name);
-        displayName.setText(user.getDisplayName());
+        displayName.setText(FBuser.getDisplayName());
         TextView displayEmail = findViewById(R.id.display_email);
-        displayEmail.setText(user.getEmail());
+        displayEmail.setText(FBuser.getEmail());
         ImageView profilePicture = findViewById(R.id.profile_picture);
         /*
         URL url = null;

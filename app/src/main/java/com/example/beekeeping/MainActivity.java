@@ -139,6 +139,16 @@ public class MainActivity extends AppCompatActivity {
             }
         },uid);
     }
+
+    boolean userExists(String uid) {
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+
+            }
+        },uid);
+        return false;
+    }
     /*
     void updateApiary(String uid, final Apiary a) {
         pullData(new DataCallback() {
