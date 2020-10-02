@@ -6,11 +6,13 @@ import java.util.UUID;
 
 public class Apiary {
     public String aid;
+    public String name;
     public List<Hive> hives;
 
-    public Apiary(String s) {
+    public Apiary(String name) {
         this.hives = new ArrayList<Hive>();
         this.aid = generateAID();
+        this.name = name;
     }
 
     public Apiary() {
