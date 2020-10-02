@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,6 +22,7 @@ public class ApiariesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
+    ListView listView;
 
     Apiary[] apiaryList;
     String apiaryNames[];
@@ -28,33 +32,20 @@ public class ApiariesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apiaries);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        listView = (ListView) findViewById(R.id.listview);
         MainActivity.pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 List<Apiary> aList = user.getApiaryList();
-                displayApiary(aList);
+                List<String> nameList = new ArrayList<String>();
+                for(int i = 0; i< aList.size(); i++){
+                    nameList.add(aList.get(i).getName());
+                }
+                ArrayAdapter arrayAdapter = new ArrayAdapter(ApiariesActivity.this, android.R.layout.simple_list_item_1, nameList);
+                listView.setAdapter(arrayAdapter);
             }
         },user.getUid());
-    }
-
-    private void displayApiary(List<Apiary> a){
-        int size = a.size();
-
-        ArrayList<String> apiariesInList = new ArrayList<>();
-        Apiary[] apiaryArray = new Apiary[size];
-
-        for (int i = 0; i < size; i++) {
-            Apiary mApiary = a.get(i);
-            String name = mApiary.getName();
-            apiariesInList.add(name);
-            apiaryArray[i] = mApiary;
-        }
-
-        recyclerView = (RecyclerView) findViewById(R.id.display_apiaries);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new DisplayApiaryAdapter(this, apiariesInList, apiaryArray);
-        recyclerView.setAdapter(mAdapter);
-
     }
 
     public ArrayList<Apiary> getApiaries(String id) {
