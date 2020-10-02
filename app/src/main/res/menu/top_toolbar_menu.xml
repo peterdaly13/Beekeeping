@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="back_btn"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
         android:title="back"
-        android:icon="@drawable/ic_baseline_arrow_back_24"/>
+        android:icon="@drawable/ic_baseline_arrow_back_24"
+        app:showAsAction="always"/>
 
-    <item android:id="edit_btn"
-        android:title="back"
-        android:icon="@drawable/ic_baseline_arrow_back_24"/>
+    <item
+        android:title="current page"
+        app:showAsAction="always"/>
+
+    <item
+        android:title="edit"
+        android:icon="@drawable/ic_baseline_edit_24"
+        app:showAsAction="always"/>
 
 </menu>
