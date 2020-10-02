@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -20,12 +21,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    public DatabaseReference mDatabase;
+    public static DatabaseReference mDatabase;
     Button button;
     Button login_button;
 
@@ -50,47 +52,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-       // button = (Button) findViewById(R.id.Button);
-
-
-//        button.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-////                User user1 = new User("Ted", "123");
-////                Apiary a = new Apiary(123);
-////                Apiary b = new Apiary(456);
-////                Hive h = new Hive("1", "2", "3", "4", "5", "6", "7", "8");
-////                Hive i = new Hive("1", "2", "3", "4", "5", "6", "7", "8");
-////                Log.i("Button", h.getInspectionResults());
-////                a.addHive(h);
-////                b.addHive(i);
-////                user1.addApiary(a);
-////                user1.addApiary(b);
-////                pushData(user1);
-//
-//                pullData(new DataCallback() {
-//                    @Override
-//                    public void onCallback(User value) {
-//                        //here, value is the returned User
-//                        Log.i("Pull", value.toString() );
-//
-//                    }
-//                }, "5555");
-//
-//
-
-
-//
-//            }
-//        });
-
-//        return val[0];
     }
 
     //int uID, final String action
-    private void pullData(final DataCallback dbc, final String uid) {
+    static void pullData(final DataCallback dbc, final String uid) {
         // Somehow this allows the action String to work as intended
         DatabaseReference qReference = mDatabase.child("users").child(uid);
         Log.d("Fetch", qReference.toString());
@@ -110,14 +75,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Use the uID to access the correct user
-     //   return null;
+        //   return null;
     }
 
-    private void pushData(User user){
+    static void pushData(User user) {
         // A HashMap is used to upload information to firebase, the String is the location in
         // firebase and the Object is the SongQueue to be put in firebase
         HashMap<String, Object> map = new HashMap<>();
-        String folder = "/users/"+ Integer.toString(user.getId());
+        String folder = "/users/" + user.getId();
         map.put(folder, user);
         mDatabase.updateChildren(map)
                 .addOnFailureListener(new OnFailureListener() {
@@ -128,53 +93,142 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-
-    /*
-    private User pullData(int uID, final String action) {
-        // Somehow this allows the action String to work as intented
-        final String[] actionRef = {action};
-        // Use the partyLeaderID to access the correct database
-        DatabaseReference qReference = mDatabase.child("users").child(Integer.toString(uID));
-        final ArrayList<User> uList = new ArrayList<User>();
-        uList.add(null);
-        // The onDataChange will be called once to perform an action, and then once again if the
-        // data was changed. The action var is set to "" so that no action repeats in one call of
-        // pullData
-        ValueEventListener postListener = new ValueEventListener() {
-
+    void addApiary(String uid, final Apiary a) {
+        pullData(new DataCallback() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get the User from Firebase
-                User user = dataSnapshot.getValue(User.class);
-                user = dataSnapshot.getValue(User.class);
-
-                if (user != null) {
-                    Log.i("User" , "Not null");
-                    // Perform the desired action
-                    if (actionRef[0].equals("return")) {
-                        uList.add(user);
-                    }
-                }
-                else{
-                    Log.i("User" , "Null");
-                }
-                // Set action to "" so that the action doesn't repeat
-                actionRef[0] ="";
-
+            public void onCallback(User user) {
+                user.getApiaryList().add(a);
+                pushData(user);
             }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting SongQueue failed, log a message
-                Log.w("PullData", "Failed to Load User from Firebase", databaseError.toException());
-            }
-        };
-        qReference.addValueEventListener(postListener);
-        uList.remove(0);
-        return uList.get(0);
+        },uid);
     }
 
+    void addHive(String uid, final String aid, final Hive h) {
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                List<Apiary> aList = user.getApiaryList();
+                for(int i = 0; i < aList.size(); i++){
+                    if(aList.get(i).getAid().equals(aid)){
+                        user.getApiaryList().get(i).addHive(h);
+                    }
+                }
+
+                pushData(user);
+            }
+        },uid);
+    }
+
+    void updateHive(String uid, final String aid, final Hive h) {
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                List<Apiary> aList = user.getApiaryList();
+                for(int i = 0; i < aList.size(); i++){
+                    if(aList.get(i).getAid().equals(aid)){
+                        List<Hive> hList = user.getApiaryList().get(i).getHives();
+                        for(int j =0; j< hList.size(); j++){
+                            if(hList.get(j).getHiveID().equals(h.getHiveID())){
+                                user.getApiaryList().get(i).getHives().set(j, h);
+                            }
+                        }
+                    }
+                }
+
+                pushData(user);
+            }
+        },uid);
+    }
+
+    boolean userExists(String uid) {
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+
+            }
+        },uid);
+        return false;
+    }
+    /*
+    void updateApiary(String uid, final Apiary a) {
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                List<Apiary> aList = user.getApiaryList();
+                for(int i = 0; i < aList.size(); i++){
+                    if(aList.get(i).getAid().equals(a.getAid())){
+                        user.getApiaryList().set(i, a);
+                    }
+                }
+                pushData(user);
+            }
+        },uid);
+    }
     */
+    void updateUsername(String uid, final String name){
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                user.setName(name);
+                pushData(user);
+            }
+        },uid);
+    }
+    void updatePhone(String uid, final String phone){
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                user.setPhoneNumber(phone);
+                pushData(user);
+            }
+        },uid);
+    }
+    void updateEmail(String uid, final String email){
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                user.setEmail(email);
+                pushData(user);
+            }
+        },uid);
+    }
+    void updateImage(String uid, final Image img){
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                user.setProfilePic(img);
+                pushData(user);
+            }
+        },uid);
+    }
+
+    void updateApiaryName(String uid, final String aid, final String name){
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                List<Apiary> aList = user.getApiaryList();
+                for(int i = 0; i< aList.size(); i++){
+                    if(aList.get(i).getAid().equals(aid)){
+                        user.getApiaryList().get(i).setName(name);
+                    }
+                }
+                pushData(user);
+            }
+        },uid);
+    }
+    void displayApiaryList(String uid){
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                List<Apiary> aList = user.getApiaryList();
+                //YOUR CODE HERE TRESSA
+                pushData(user);
+            }
+        },uid);
+    }
+
+
+
 }
 
 

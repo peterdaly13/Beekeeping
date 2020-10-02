@@ -6,20 +6,18 @@ import java.util.List;
 
 // Each beekeeper is represented as a user
 public class User {
-    public int id;
+    public String id;
     public String name;
-    public String pswd; // look into other classes for password handling
     public String phoneNumber;
     public String email;
     public Image profilePic;
     public List <Apiary> apiaryList; //Can be implemented as an arrayList since beekeepers can have mutiple Apiaries
 
 
-    public User(String name, String pswd) {
-        generateId();
+    public User(String name, String id) {
         this.name = name;
-        this.pswd = pswd;
         this.apiaryList = new ArrayList<Apiary>();
+        this.id = id;
     }
     public User() {
     }
@@ -32,20 +30,20 @@ public class User {
         this.name = name;
     }
 
-    int getId() {
+    String getId() {
         return this.id;
     }
 
-    void generateId() {
-        this.id = 5555; //TODO generate unique id
+    void setId(String id){
+        this.id = id;
     }
 
-    void deleteUser() {
-        // TODO make UserList class and implement deleteUser there
-    }
-
-    public void addApiary(Apiary a){
+    void addApiary(Apiary a){
         apiaryList.add(a);
+    }
+
+    List<Apiary> getApiaryList(){
+        return apiaryList;
     }
 
     String getEmail() {
@@ -69,11 +67,18 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", pswd='" + pswd + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", profilePic=" + profilePic +
                 ", apiaryList=" + apiaryList +
                 '}';
+    }
+
+    public Image getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(Image profilePic) {
+        this.profilePic = profilePic;
     }
 }

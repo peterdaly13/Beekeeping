@@ -1,6 +1,9 @@
 package com.example.beekeeping;
 
+import java.util.UUID;
+
 public class Hive {
+    public String hiveID;
     public String inspectionResults;
     public String health;
     public String honeyStores;
@@ -23,6 +26,20 @@ public class Hive {
         this.equipmentInventory = equipmentInventory;
         this.losses = losses;
         this.gains = gains;
+        setHiveID();
+    }
+
+    public Hive(String inspectionResults, String health, String honeyStores, String queenProduction,
+                String equipmentOnHive, String equipmentInventory, String losses, String gains, String hiveID){
+        this.inspectionResults = inspectionResults;
+        this.health = health;
+        this.honeyStores = honeyStores;
+        this.queenProduction = queenProduction;
+        this.equipmentOnHive = equipmentOnHive;
+        this.equipmentInventory = equipmentInventory;
+        this.losses = losses;
+        this.gains = gains;
+        this.hiveID = hiveID;
     }
 
 
@@ -88,5 +105,13 @@ public class Hive {
 
     public void setGains(String gains) {
         this.gains = gains;
+    }
+
+    public String getHiveID() {
+        return hiveID;
+    }
+
+    public void setHiveID() {
+        hiveID = UUID.randomUUID().toString();
     }
 }

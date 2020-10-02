@@ -2,27 +2,33 @@ package com.example.beekeeping;
 
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.UUID;
+import java.util.UUID;
 
 public class Apiary {
-    public int aid;
+    public String aid;
+    public String name;
     public List<Hive> hives;
 
-    public Apiary(int aid) {
+    public Apiary(String name) {
+        this.hives = new ArrayList<Hive>();
+        this.aid = generateAID();
+        this.name = name;
+    }
+    /*
+    public Apiary(String name, String aid) {
         this.hives = new ArrayList<Hive>();
         this.aid = aid;
+        this.name = name;
     }
+     */
 
     public Apiary() {
-
     }
 
 
-    public int getAid() {
+    public String getAid() {
         return aid;
     }
-
-    //public void setAid(int aid) { this.aid = aid; }
 
     public List<Hive> getHives() {
         return hives;
@@ -42,9 +48,15 @@ public class Apiary {
         return info;
     }
 
-    private void generateAID() {
-        //this.aid = UUID.randomUUID().toString();//TODO
+    private String generateAID() {
+        return UUID.randomUUID().toString();
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }
