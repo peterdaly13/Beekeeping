@@ -25,7 +25,7 @@
         android:layout_marginTop="236dp"
         android:layout_marginEnd="186dp"
         android:layout_marginRight="186dp"
-        android:layout_marginBottom="80dp" 
+        android:layout_marginBottom="80dp"
         android:text="Press"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,5 +42,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.619" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_dark_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@drawable/item_selected"
+        app:itemTextColor="@color/colorPrimaryDark"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
