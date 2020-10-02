@@ -15,6 +15,13 @@ public class Apiary {
         this.aid = generateAID();
         this.name = name;
     }
+    public Apiary(String name, String aid) {
+        this.hives = new ArrayList<Hive>();
+        this.hives.add(new Hive());
+        this.aid = aid;
+        this.name = name;
+    }
+
     /*
     public Apiary(String name, String aid) {
         this.hives = new ArrayList<Hive>();

@@ -31,6 +31,15 @@ public class MeActivity extends AppCompatActivity {
 
         // if new user, push new user data to DB
         String uid = FBuser.getUid();
+
+
+
+        TextView displayName = findViewById(R.id.display_name);
+        displayName.setText(FBuser.getDisplayName());
+        TextView displayEmail = findViewById(R.id.display_email);
+        displayEmail.setText(FBuser.getEmail());
+        ImageView profilePicture = findViewById(R.id.profile_picture);
+
         MainActivity.pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
@@ -40,13 +49,6 @@ public class MeActivity extends AppCompatActivity {
                 }
             }
         },uid);
-
-
-        TextView displayName = findViewById(R.id.display_name);
-        displayName.setText(FBuser.getDisplayName());
-        TextView displayEmail = findViewById(R.id.display_email);
-        displayEmail.setText(FBuser.getEmail());
-        ImageView profilePicture = findViewById(R.id.profile_picture);
         /*
         URL url = null;
         try {
