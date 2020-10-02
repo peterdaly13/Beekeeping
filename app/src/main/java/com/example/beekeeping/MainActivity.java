@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         launch_login = (Button) findViewById(R.id.launch_login);
         launch_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FirebaseUIActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
