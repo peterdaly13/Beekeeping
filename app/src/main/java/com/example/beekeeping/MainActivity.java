@@ -9,8 +9,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     public DatabaseReference mDatabase;
     Button button;
-    Button launch_login;
+    Button login_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +38,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        // if user is already logged in, go directly to "me" page
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            startActivity(new Intent(MainActivity.this, MeActivity.class));
+        }
+
+        login_button = (Button) findViewById(R.id.login_button);
+        login_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        /*
         button = (Button) findViewById(R.id.Button);
         button.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                /*
                 User user1 = new User("Ted", "123");
                 Apiary a = new Apiary(123);
                 Apiary b = new Apiary(456);
@@ -50,22 +68,14 @@ public class MainActivity extends AppCompatActivity {
                 b.addHive(i);
                 user1.addApiary(a);
                 user1.addApiary(b);
-                pushData(user1);*/
+                pushData(user1);
                 User u = pullData(5555 , "return");
                 Log.i("Pull", u.toString() );
 
 
             }
         });
-
-        launch_login = (Button) findViewById(R.id.launch_login);
-        launch_login.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        */
 
 
 
