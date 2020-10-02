@@ -1,7 +1,10 @@
 package com.example.beekeeping;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -20,5 +23,9 @@ public class ApiariesActivity extends AppCompatActivity {
 
     public ArrayList<Apiary> getApiaries(String id) {
         return null;
+    }
+
+    public void onAddApiaryClick(View v) {
+        startActivity(new Intent(ApiariesActivity.this, AddApiaryActivity.class));
     }
 }

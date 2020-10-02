@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    void addApiary(String uid, final Apiary a) {
+    static void addApiary(String uid, final Apiary a) {
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
