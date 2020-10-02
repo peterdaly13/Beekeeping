@@ -26,6 +26,7 @@ public class Hive {
         this.equipmentInventory = equipmentInventory;
         this.losses = losses;
         this.gains = gains;
+        setHiveID();
     }
 
 
