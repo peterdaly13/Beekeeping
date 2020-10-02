@@ -40,9 +40,6 @@ public class User {
         this.id = 321; //TODO generate unique id
     }
 
-    void deleteUser() {
-        // TODO make UserList class and implement deleteUser there
-    }
 
     public void addApiary(Apiary a){
         apiaryList.add(a);
