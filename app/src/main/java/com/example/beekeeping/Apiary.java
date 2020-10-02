@@ -11,6 +11,7 @@ public class Apiary {
 
     public Apiary(String name) {
         this.hives = new ArrayList<Hive>();
+        this.hives.add(new Hive());
         this.aid = generateAID();
         this.name = name;
     }

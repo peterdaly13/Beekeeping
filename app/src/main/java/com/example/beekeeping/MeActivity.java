@@ -29,7 +29,6 @@ public class MeActivity extends AppCompatActivity {
 
         final FirebaseUser FBuser = FirebaseAuth.getInstance().getCurrentUser();
 
-
         // if new user, push new user data to DB
         String uid = FBuser.getUid();
         MainActivity.pullData(new DataCallback() {
@@ -86,6 +85,10 @@ public class MeActivity extends AppCompatActivity {
     public void onLogOutClick() {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(MeActivity.this, MainActivity.class));
+    }
+
+    public void onApiariesClick(View v) {
+        startActivity(new Intent(MeActivity.this, ApiariesActivity.class));
     }
 
 

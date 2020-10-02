@@ -15,8 +15,11 @@ public class User {
 
 
     public User(String name, String id) {
+
         this.name = name;
         this.apiaryList = new ArrayList<Apiary>();
+        Apiary apiary = new Apiary("stub");
+        this.apiaryList.add(apiary);
         this.id = id;
     }
     public User() {
