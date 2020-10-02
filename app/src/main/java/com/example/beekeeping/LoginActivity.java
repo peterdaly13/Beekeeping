@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final int RC_SIGN_IN = 123;
+    private static final int RC_SIGN_IN = 123; //what's this?
 
 
     @Override
@@ -44,9 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         Create and launch sign-in intent
      */
     public void createSignInIntent() {
-        startActivityForResult(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder().build(), RC_SIGN_IN);
+        startActivityForResult( AuthUI.getInstance().createSignInIntentBuilder().build(), RC_SIGN_IN );
         
     }
 

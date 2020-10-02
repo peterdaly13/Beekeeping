@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,9 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public DatabaseReference mDatabase;
     Button button;
     Button login_button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,34 +51,44 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        /*
-        button = (Button) findViewById(R.id.Button);
+
+       // button = (Button) findViewById(R.id.Button);
 
 
-        button.setOnClickListener(new View.OnClickListener() {
+//        button.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View v) {
+////                User user1 = new User("Ted", "123");
+////                Apiary a = new Apiary(123);
+////                Apiary b = new Apiary(456);
+////                Hive h = new Hive("1", "2", "3", "4", "5", "6", "7", "8");
+////                Hive i = new Hive("1", "2", "3", "4", "5", "6", "7", "8");
+////                Log.i("Button", h.getInspectionResults());
+////                a.addHive(h);
+////                b.addHive(i);
+////                user1.addApiary(a);
+////                user1.addApiary(b);
+////                pushData(user1);
+//
+//                pullData(new DataCallback() {
+//                    @Override
+//                    public void onCallback(User value) {
+//                        //here, value is the returned User
+//                        Log.i("Pull", value.toString() );
+//
+//                    }
+//                }, "5555");
+//
+//
 
-            public void onClick(View v) {
-                User user1 = new User("Ted", "123");
-                Apiary a = new Apiary(123);
-                Apiary b = new Apiary(456);
-                Hive h = new Hive("1", "2", "3", "4", "5", "6", "7", "8");
-                Hive i = new Hive("1", "2", "3", "4", "5", "6", "7", "8");
-                Log.i("Button", h.getInspectionResults());
-                a.addHive(h);
-                b.addHive(i);
-                user1.addApiary(a);
-                user1.addApiary(b);
-                pushData(user1);
-                User u = pullData(5555 , "return");
-                Log.i("Pull", u.toString() );
 
+//
+//            }
+//        });
 
-            }
-        }, uid);
-
-        return val[0];
+//        return val[0];
     }
-*/
+
     //int uID, final String action
     private void pullData(final DataCallback dbc, final String uid) {
         // Somehow this allows the action String to work as intended
@@ -102,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Use the uID to access the correct user
+     //   return null;
     }
 
     private void pushData(User user){
@@ -119,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+
+    /*
     private User pullData(int uID, final String action) {
         // Somehow this allows the action String to work as intented
         final String[] actionRef = {action};
@@ -163,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         return uList.get(0);
     }
 
-
+    */
 }
 
 
