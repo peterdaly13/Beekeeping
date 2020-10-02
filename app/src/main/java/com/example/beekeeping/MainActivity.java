@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -181,6 +182,15 @@ public class MainActivity extends AppCompatActivity {
             }
         },uid);
     }
+    void updateImage(String uid, final Image img){
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                user.setProfilePic(img);
+                pushData(user);
+            }
+        },uid);
+    }
 
     void updateApiaryName(String uid, final String aid, final String name){
         pullData(new DataCallback() {
@@ -192,6 +202,16 @@ public class MainActivity extends AppCompatActivity {
                         user.getApiaryList().get(i).setName(name);
                     }
                 }
+                pushData(user);
+            }
+        },uid);
+    }
+    void displayApiaryList(String uid){
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                List<Apiary> aList = user.getApiaryList();
+                //YOUR CODE HERE TRESSA
                 pushData(user);
             }
         },uid);

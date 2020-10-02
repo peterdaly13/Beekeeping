@@ -76,4 +76,12 @@ public class User {
                 ", apiaryList=" + apiaryList +
                 '}';
     }
+
+    public Image getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(Image profilePic) {
+        this.profilePic = profilePic;
+    }
 }
