@@ -37,7 +37,7 @@ public class User {
     }
 
     void generateId() {
-        this.id = 5555; //TODO generate unique id
+        this.id = 321; //TODO generate unique id
     }
 
     void deleteUser() {
