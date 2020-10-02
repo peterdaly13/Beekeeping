@@ -8,16 +8,14 @@ import java.util.List;
 public class User {
     public String id;
     public String name;
-    public String pswd; // look into other classes for password handling
     public String phoneNumber;
     public String email;
     public Image profilePic;
     public List <Apiary> apiaryList; //Can be implemented as an arrayList since beekeepers can have mutiple Apiaries
 
 
-    public User(String name, String pswd, String id) {
+    public User(String name, String id) {
         this.name = name;
-        this.pswd = pswd;
         this.apiaryList = new ArrayList<Apiary>();
         this.id = id;
     }
@@ -69,7 +67,6 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", pswd='" + pswd + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", profilePic=" + profilePic +
