@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //int uID, final String action
-    private void pullData(final DataCallback dbc, final String uid) {
+    void pullData(final DataCallback dbc, final String uid) {
         // Somehow this allows the action String to work as intended
         DatabaseReference qReference = mDatabase.child("users").child(uid);
         Log.d("Fetch", qReference.toString());
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         //   return null;
     }
 
-    private void pushData(User user) {
+    void pushData(User user) {
         // A HashMap is used to upload information to firebase, the String is the location in
         // firebase and the Object is the SongQueue to be put in firebase
         HashMap<String, Object> map = new HashMap<>();
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    private void addApiary(String uid, final Apiary a) {
+    void addApiary(String uid, final Apiary a) {
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         },uid);
     }
 
-    private void addHive(String uid, final String aid, final Hive h) {
+    void addHive(String uid, final String aid, final Hive h) {
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         },uid);
     }
 
-    private void updateHive(String uid, final String aid, final Hive h) {
+    void updateHive(String uid, final String aid, final Hive h) {
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
@@ -138,8 +138,8 @@ public class MainActivity extends AppCompatActivity {
             }
         },uid);
     }
-
-    private void updateApiary(String uid, final Apiary a) {
+    /*
+    void updateApiary(String uid, final Apiary a) {
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
@@ -147,6 +147,49 @@ public class MainActivity extends AppCompatActivity {
                 for(int i = 0; i < aList.size(); i++){
                     if(aList.get(i).getAid().equals(a.getAid())){
                         user.getApiaryList().set(i, a);
+                    }
+                }
+                pushData(user);
+            }
+        },uid);
+    }
+    */
+    void updateUsername(String uid, final String name){
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                user.setName(name);
+                pushData(user);
+            }
+        },uid);
+    }
+    void updatePhone(String uid, final String phone){
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                user.setPhoneNumber(phone);
+                pushData(user);
+            }
+        },uid);
+    }
+    void updateEmail(String uid, final String email){
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                user.setEmail(email);
+                pushData(user);
+            }
+        },uid);
+    }
+
+    void updateApiaryName(String uid, final String aid, final String name){
+        pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                List<Apiary> aList = user.getApiaryList();
+                for(int i = 0; i< aList.size(); i++){
+                    if(aList.get(i).getAid().equals(aid)){
+                        user.getApiaryList().get(i).setName(name);
                     }
                 }
                 pushData(user);

@@ -14,6 +14,13 @@ public class Apiary {
         this.aid = generateAID();
         this.name = name;
     }
+    /*
+    public Apiary(String name, String aid) {
+        this.hives = new ArrayList<Hive>();
+        this.aid = aid;
+        this.name = name;
+    }
+     */
 
     public Apiary() {
     }
@@ -22,8 +29,6 @@ public class Apiary {
     public String getAid() {
         return aid;
     }
-
-    //public void setAid(int aid) { this.aid = aid; }
 
     public List<Hive> getHives() {
         return hives;
@@ -47,5 +52,11 @@ public class Apiary {
         return UUID.randomUUID().toString();
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

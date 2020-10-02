@@ -29,6 +29,19 @@ public class Hive {
         setHiveID();
     }
 
+    public Hive(String inspectionResults, String health, String honeyStores, String queenProduction,
+                String equipmentOnHive, String equipmentInventory, String losses, String gains, String hiveID){
+        this.inspectionResults = inspectionResults;
+        this.health = health;
+        this.honeyStores = honeyStores;
+        this.queenProduction = queenProduction;
+        this.equipmentOnHive = equipmentOnHive;
+        this.equipmentInventory = equipmentInventory;
+        this.losses = losses;
+        this.gains = gains;
+        this.hiveID = hiveID;
+    }
+
 
     public String getInspectionResults() {
         return inspectionResults;
