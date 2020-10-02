@@ -24,9 +24,6 @@ public class ApiariesActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     ListView listView;
 
-    Apiary[] apiaryList;
-    String apiaryNames[];
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
