@@ -33,6 +33,7 @@ public class MeActivity extends AppCompatActivity {
         TextView displayEmail = findViewById(R.id.display_email);
         displayEmail.setText(user.getEmail());
         ImageView profilePicture = findViewById(R.id.profile_picture);
+        /*
         URL url = null;
         try {
             url = new URL("https://homepages.cae.wisc.edu/~ece533/images/cat.png");
@@ -48,6 +49,8 @@ public class MeActivity extends AppCompatActivity {
         profilePicture.setImageBitmap(bmp);
 
         //profilePicture.setImageURI(user.getPhotoUrl());
+
+         */
 
 
 
