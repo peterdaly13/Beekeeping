@@ -27,9 +27,20 @@ public class MeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_me);
 
-        FirebaseUser FBuser = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseUser FBuser = FirebaseAuth.getInstance().getCurrentUser();
+
 
         // if new user, push new user data to DB
+        String uid = FBuser.getUid();
+        MainActivity.pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                if(user== null){
+                    User newUser = new User(FBuser.getDisplayName(), FBuser.getUid());
+                    MainActivity.pushData(newUser);
+                }
+            }
+        },uid);
 
 
         TextView displayName = findViewById(R.id.display_name);

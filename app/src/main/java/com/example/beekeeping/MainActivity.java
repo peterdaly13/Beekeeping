@@ -27,7 +27,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    public DatabaseReference mDatabase;
+    public static DatabaseReference mDatabase;
     Button button;
     Button login_button;
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //int uID, final String action
-    void pullData(final DataCallback dbc, final String uid) {
+    static void pullData(final DataCallback dbc, final String uid) {
         // Somehow this allows the action String to work as intended
         DatabaseReference qReference = mDatabase.child("users").child(uid);
         Log.d("Fetch", qReference.toString());
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         //   return null;
     }
 
-    void pushData(User user) {
+    static void pushData(User user) {
         // A HashMap is used to upload information to firebase, the String is the location in
         // firebase and the Object is the SongQueue to be put in firebase
         HashMap<String, Object> map = new HashMap<>();
@@ -226,6 +226,7 @@ public class MainActivity extends AppCompatActivity {
             }
         },uid);
     }
+
 
 
 }
