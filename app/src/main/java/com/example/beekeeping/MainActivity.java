@@ -107,69 +107,20 @@ public class MainActivity extends AppCompatActivity {
 
         ///Urw3ICjs0edn1hsM7ACFPWDMTeG3/profile_image.jpg
         StorageReference storageRef = storage.getReference();
-
+        StorageReference userRef = storageRef.child(uid);
         final StorageReference picRef = storageRef.child(uid).child("profile_image");
 
-        final Task<ListResult> listResultTask = storageRef.listAll()
-                .addOnSuccessListener(new OnSuccessListener<ListResult>() {
-                    @Override
-                    public void onSuccess(ListResult listResult) {
-                        List<StorageReference> items = listResult.getItems();
-                        for (int i = 0; i < items.size(); i++) {
-                            Log.d("file", "Listing items found::" + items.get((i)).toString());
-                        }
-                        if (items.toString().contains(uid)) {
-                            picRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    Log.d("file", "success");
-                                    ccb.onCallback(true);
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception exception) {
-                                    Log.d("file", "failed");
-                                    // File not found
-                                    ccb.onCallback(false);
-                                }
-                            });
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("file", "no results were found under the uid: " + uid);
-                    }
-                });
-        //  if ()
-
-        listResultTask.addOnCompleteListener(new OnCompleteListener<ListResult>() {
-             @Override
-             public void onComplete(@NonNull Task<ListResult> task) {
-
-                 List<StorageReference> items = task.getResult().getItems();
-                 for (int i = 0; i < items.size(); i++) {
-                     Log.d("file", "Listing items found::" + items.get((i)).toString());
-                 }
-                 if (items.toString().contains(uid)) {
-                     picRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                         @Override
-                         public void onSuccess(Uri uri) {
-                             Log.d("file", "success");
-                             ccb.onCallback(true);
-                         }
-                     }).addOnFailureListener(new OnFailureListener() {
-                         @Override
-                         public void onFailure(@NonNull Exception exception) {
-                             Log.d("file", "failed");
-                             // File not found
-                             ccb.onCallback(false);
-                         }
-                     });
-                 }
-             }
+        picRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                ccb.onCallback(true);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                ccb.onCallback(false);
+            }
         });
-        Log.d("file", "done gettingDownloadURL");
     }
 
     static void pushData(User user) {
