@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/gains_header"
+        android:id="@+id/health_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul"
@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.224" />
 
     <TextView
-        android:id="@+id/gains_header17"
+        android:id="@+id/hive_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul"
@@ -48,7 +48,7 @@
         app:layout_constraintVertical_bias="0.065" />
 
     <TextView
-        android:id="@+id/gains_header11"
+        android:id="@+id/hive_gains"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul_bold"
@@ -63,7 +63,7 @@
         app:layout_constraintVertical_bias="0.63" />
 
     <TextView
-        android:id="@+id/gains_header16"
+        android:id="@+id/losses_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul"
@@ -78,7 +78,7 @@
         app:layout_constraintVertical_bias="0.703" />
 
     <TextView
-        android:id="@+id/gains_header6"
+        android:id="@+id/honey_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul"
@@ -93,7 +93,7 @@
         app:layout_constraintVertical_bias="0.386" />
 
     <TextView
-        android:id="@+id/gains_header2"
+        android:id="@+id/hive_health"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul_bold"
@@ -108,7 +108,7 @@
         app:layout_constraintVertical_bias="0.224" />
 
     <TextView
-        android:id="@+id/gains_header14"
+        android:id="@+id/hive_inventory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul_bold"
@@ -123,7 +123,7 @@
         app:layout_constraintVertical_bias="0.545" />
 
     <TextView
-        android:id="@+id/gains_header10"
+        android:id="@+id/hive_equip_on_hive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul_bold"
@@ -138,7 +138,7 @@
         app:layout_constraintVertical_bias="0.466" />
 
     <TextView
-        android:id="@+id/gains_header4"
+        android:id="@+id/queen__label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul"
@@ -153,7 +153,7 @@
         app:layout_constraintVertical_bias="0.303" />
 
     <TextView
-        android:id="@+id/gains_header3"
+        android:id="@+id/hive_queen_production"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul_bold"
@@ -168,7 +168,7 @@
         app:layout_constraintVertical_bias="0.303" />
 
     <TextView
-        android:id="@+id/gains_header15"
+        android:id="@+id/hive_losses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul_bold"
@@ -183,7 +183,7 @@
         app:layout_constraintVertical_bias="0.703" />
 
     <TextView
-        android:id="@+id/gains_header9"
+        android:id="@+id/gains_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul"
@@ -198,7 +198,7 @@
         app:layout_constraintVertical_bias="0.63" />
 
     <TextView
-        android:id="@+id/gains_header12"
+        android:id="@+id/equip_on_hive_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul"
@@ -213,7 +213,7 @@
         app:layout_constraintVertical_bias="0.466" />
 
     <TextView
-        android:id="@+id/gains_header13"
+        android:id="@+id/inventory_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul"
@@ -228,7 +228,7 @@
         app:layout_constraintVertical_bias="0.545" />
 
     <TextView
-        android:id="@+id/gains_header5"
+        android:id="@+id/hive_honey_stores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asul_bold"
