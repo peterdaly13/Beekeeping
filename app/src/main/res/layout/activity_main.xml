@@ -4,48 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F4F4F4"
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="205dp"
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="189dp"
         android:layout_height="48dp"
-        android:fontFamily="@font/asul_bold"
-        android:gravity="center"
-        android:text="Beekeeper"
-        android:textAlignment="center"
-        android:textColor="@color/colorText"
-        android:textSize="30sp"
+        android:text="Login / sign up"
+        android:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092" />
-
-    <Button
-    android:id="@+id/login_button"
-    android:layout_width="189dp"
-    android:layout_height="48dp"
-    android:text="Login / sign up"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.816" />
-
-<!--    test portal-->
-<!--    <Button-->
-<!--        android:id="@+id/jump"-->
-<!--        android:layout_width="189dp"-->
-<!--        android:layout_height="48dp"-->
-<!--        android:text="test portal"-->
-<!--        android:backgroundTint="@color/colorPrimary"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.912" />-->
+        app:layout_constraintVertical_bias="0.816" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -58,5 +31,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.427"
         app:srcCompat="@drawable/ic_bee_fancy" />
+
+    <!--    test portal-->
+    <!--    <Button-->
+    <!--        android:id="@+id/jump"-->
+    <!--        android:layout_width="189dp"-->
+    <!--        android:layout_height="48dp"-->
+    <!--        android:text="test portal"-->
+    <!--        android:backgroundTint="@color/colorPrimary"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.912" />-->
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="284dp"
+        android:layout_height="63dp"
+        android:fontFamily="@font/asul_bold"
+        android:gravity="center"
+        android:text="Beekeeper"
+        android:textAlignment="center"
+        android:textColor="@color/colorText"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.092" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,160 +13,167 @@
         android:text="Logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.879"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.891" />
+
+    <Button
+        android:id="@+id/goto_apiaries_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onApiariesClick"
+        android:text="Apiaries"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.891" />
 
     <TextView
         android:id="@+id/display_name"
-        android:layout_width="142dp"
-        android:layout_height="44dp"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/asul"
         android:text="Name"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintHorizontal_bias="0.76"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.081" />
+        app:layout_constraintVertical_bias="0.082" />
 
     <TextView
         android:id="@+id/display_email"
-        android:layout_width="141dp"
-        android:layout_height="44dp"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/asul"
         android:text="Email"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.837"
+        app:layout_constraintHorizontal_bias="0.76"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18" />
+        app:layout_constraintVertical_bias="0.185" />
 
     <ImageView
         android:id="@+id/profile_picture"
-        android:layout_width="143dp"
-        android:layout_height="117dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="#08000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintHorizontal_bias="0.199"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.091"
         app:srcCompat="@drawable/ic_baseline_add_24" />
 
     <TextView
-        android:id="@+id/textView12"
-        android:layout_width="109dp"
-        android:layout_height="107dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.784"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.479" />
-
-    <TextView
-        android:id="@+id/display_num_apiaries"
-        android:layout_width="102dp"
-        android:layout_height="104dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.481" />
-
-    <TextView
-        android:id="@+id/display_losses"
-        android:layout_width="113dp"
-        android:layout_height="103dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.731"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.834" />
-
-    <TextView
-        android:id="@+id/apiaries_header"
-        android:layout_width="102dp"
-        android:layout_height="26dp"
-        android:text="Apiaries"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.341" />
-
-    <TextView
-        android:id="@+id/display_gains"
-        android:layout_width="105dp"
-        android:layout_height="103dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.176"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.834" />
-
-    <TextView
-        android:id="@+id/losses_header"
-        android:layout_width="70dp"
-        android:layout_height="25dp"
-        android:text="Losses"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.695"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.661" />
-
-    <TextView
         android:id="@+id/gains_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/asul_bold"
         android:text="Gains"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.221"
+        app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.661" />
+        app:layout_constraintVertical_bias="0.551" />
+
+    <TextView
+        android:id="@+id/apiaries_header"
+        android:layout_width="106dp"
+        android:layout_height="20dp"
+        android:fontFamily="@font/asul_bold"
+        android:text="Apiaries"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.302" />
+
+    <TextView
+        android:id="@+id/display_gains"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.654" />
+
+    <TextView
+        android:id="@+id/display_num_apiaries"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.372" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.372" />
 
     <TextView
         android:id="@+id/hives_header"
         android:layout_width="58dp"
-        android:layout_height="23dp"
+        android:layout_height="20dp"
+        android:fontFamily="@font/asul_bold"
         android:text="Hives"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.705"
+        app:layout_constraintHorizontal_bias="0.696"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.34" />
+        app:layout_constraintVertical_bias="0.302" />
 
-    <Button
-        android:id="@+id/goto_apiaries_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Apiaries"
-        android:onClick="onApiariesClick"
+    <TextView
+        android:id="@+id/display_losses"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintHorizontal_bias="0.79"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.654" />
+
+    <TextView
+        android:id="@+id/losses_header"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:fontFamily="@font/asul_bold"
+        android:text="Losses"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.721"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.551" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
