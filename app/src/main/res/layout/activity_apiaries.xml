@@ -7,28 +7,48 @@
     android:layout_height="match_parent"
     tools:context=".ApiariesActivity">
 
+    <TextView
+        android:id="@+id/hive_header2"
+        android:layout_width="221dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginRight="167dp"
+        android:layout_marginBottom="647dp"
+        android:fontFamily="@font/asul"
+        android:text="My Apiaries"
+        android:textColor="@color/colorText"
+        android:textSize="36sp"
+        app:layout_constraintVertical_bias="0.103" />
+
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="-1dp" />
+        android:layout_marginTop="125dp" />
 
     <Button
         android:id="@+id/addApiary"
         android:layout_width="wrap_content"
-        android:layout_height="75dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
-        android:onClick="onAddApiaryClick"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="148dp"
-        android:layout_marginLeft="148dp"
-        android:layout_marginEnd="152dp"
-        android:layout_marginRight="152dp"
-        android:layout_marginBottom="29dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginBottom="644dp"
+        android:onClick="onAddApiaryClick"
         android:text="Add apiary" />
 
 </RelativeLayout>
