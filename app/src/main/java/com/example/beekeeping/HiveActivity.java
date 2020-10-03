@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -50,7 +51,6 @@ public class HiveActivity extends AppCompatActivity {
         losses = (TextView) findViewById(R.id.hive_losses);
         gains = (TextView) findViewById(R.id.hive_gains);
 
-
         MainActivity.pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
@@ -70,7 +70,8 @@ public class HiveActivity extends AppCompatActivity {
                         }
                     }
                     if (temp2 != -1) {
-                        Hive h = hives.get(temp2);
+                        Hive h = user.getApiaryList().get(temp).getHives().get(temp2);
+                        /*
                         name.setText(h.getName());
                         inspectionResults.setText(h.getInspectionResults());
                         health.setText(h.getHealth());
@@ -80,6 +81,9 @@ public class HiveActivity extends AppCompatActivity {
                         equipmentInventory.setText(h.getEquipmentInventory());
                         losses.setText(h.getLosses());
                         gains.setText(h.getGains());
+
+                         */
+
                     }
                 }
             }
