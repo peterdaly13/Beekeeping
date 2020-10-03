@@ -44,6 +44,7 @@ public class ApiaryActivity extends AppCompatActivity {
                     }
                 }
                 if(temp != -1) {
+                    final int temp2 = temp;
                     final List<Hive> hives = aList.get(temp).getHives();
                     List<String> nameList = new ArrayList<String>();
                     for (int i = 0; i < hives.size(); i++) {
@@ -55,7 +56,7 @@ public class ApiaryActivity extends AppCompatActivity {
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View v, int i, long l) {
-                            onHiveClick(hives, i);
+                            onHiveClick(hives,aid, i);
                         }
                     });
                 }
@@ -73,9 +74,10 @@ public class ApiaryActivity extends AppCompatActivity {
         }
     }
 
-    public void onHiveClick(List<Hive> hives, int i) {
+    public void onHiveClick(List<Hive> hives, String aid, int hIndex ) {
         Intent intent = new Intent(ApiaryActivity.this, HiveActivity.class);
-        intent.putExtra("hid", hives.get(i).getHiveID());
+        intent.putExtra("hid", hives.get(hIndex).getHiveID());
+        intent.putExtra("aid", aid);
         startActivity(intent);
 
     }
