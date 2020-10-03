@@ -12,8 +12,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -41,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
     //jump
     Button jump;
-
-
 
 
     @Override
@@ -99,6 +99,79 @@ public class MainActivity extends AppCompatActivity {
         //   return null;
     }
 
+    static void checkProfileImg(final CheckCallBack ccb, final String uid) {
+
+        Log.d("img", "In checkProfileImg");
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+
+        ///Urw3ICjs0edn1hsM7ACFPWDMTeG3/profile_image.jpg
+        StorageReference storageRef = storage.getReference();
+
+        final StorageReference picRef = storageRef.child(uid).child("profile_image");
+
+        final Task<ListResult> listResultTask = storageRef.listAll()
+                .addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                    @Override
+                    public void onSuccess(ListResult listResult) {
+                        List<StorageReference> items = listResult.getItems();
+                        for (int i = 0; i < items.size(); i++) {
+                            Log.d("file", "Listing items found::" + items.get((i)).toString());
+                        }
+                        if (items.toString().contains(uid)) {
+                            picRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    Log.d("file", "success");
+                                    ccb.onCallback(true);
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception exception) {
+                                    Log.d("file", "failed");
+                                    // File not found
+                                    ccb.onCallback(false);
+                                }
+                            });
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("file", "no results were found under the uid: " + uid);
+                    }
+                });
+        //  if ()
+
+        listResultTask.addOnCompleteListener(new OnCompleteListener<ListResult>() {
+             @Override
+             public void onComplete(@NonNull Task<ListResult> task) {
+
+                 List<StorageReference> items = task.getResult().getItems();
+                 for (int i = 0; i < items.size(); i++) {
+                     Log.d("file", "Listing items found::" + items.get((i)).toString());
+                 }
+                 if (items.toString().contains(uid)) {
+                     picRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                         @Override
+                         public void onSuccess(Uri uri) {
+                             Log.d("file", "success");
+                             ccb.onCallback(true);
+                         }
+                     }).addOnFailureListener(new OnFailureListener() {
+                         @Override
+                         public void onFailure(@NonNull Exception exception) {
+                             Log.d("file", "failed");
+                             // File not found
+                             ccb.onCallback(false);
+                         }
+                     });
+                 }
+             }
+        });
+        Log.d("file", "done gettingDownloadURL");
+    }
+
     static void pushData(User user) {
         // A HashMap is used to upload information to firebase, the String is the location in
         // firebase and the Object is the SongQueue to be put in firebase
@@ -121,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 user.getApiaryList().add(a);
                 pushData(user);
             }
-        },uid);
+        }, uid);
     }
 
     void addHive(String uid, final String aid, final Hive h) {
@@ -129,15 +202,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCallback(User user) {
                 List<Apiary> aList = user.getApiaryList();
-                for(int i = 0; i < aList.size(); i++){
-                    if(aList.get(i).getAid().equals(aid)){
+                for (int i = 0; i < aList.size(); i++) {
+                    if (aList.get(i).getAid().equals(aid)) {
                         user.getApiaryList().get(i).addHive(h);
                     }
                 }
 
                 pushData(user);
             }
-        },uid);
+        }, uid);
     }
 
     void updateHive(String uid, final String aid, final Hive h) {
@@ -145,11 +218,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCallback(User user) {
                 List<Apiary> aList = user.getApiaryList();
-                for(int i = 0; i < aList.size(); i++){
-                    if(aList.get(i).getAid().equals(aid)){
+                for (int i = 0; i < aList.size(); i++) {
+                    if (aList.get(i).getAid().equals(aid)) {
                         List<Hive> hList = user.getApiaryList().get(i).getHives();
-                        for(int j =0; j< hList.size(); j++){
-                            if(hList.get(j).getHiveID().equals(h.getHiveID())){
+                        for (int j = 0; j < hList.size(); j++) {
+                            if (hList.get(j).getHiveID().equals(h.getHiveID())) {
                                 user.getApiaryList().get(i).getHives().set(j, h);
                             }
                         }
@@ -158,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
                 pushData(user);
             }
-        },uid);
+        }, uid);
     }
 
     void deleteApiary(String uid, final Apiary a) {
@@ -166,68 +239,72 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCallback(User user) {
                 List<Apiary> aList = user.getApiaryList();
-                for(int i = 0; i < aList.size(); i++){
-                    if(aList.get(i).getAid().equals(a.getAid())){
+                for (int i = 0; i < aList.size(); i++) {
+                    if (aList.get(i).getAid().equals(a.getAid())) {
                         user.getApiaryList().remove(i);
                     }
                 }
                 pushData(user);
             }
-        },uid);
+        }, uid);
     }
 
-    void updateUsername(String uid, final String name){
+    void updateUsername(String uid, final String name) {
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 user.setName(name);
                 pushData(user);
             }
-        },uid);
+        }, uid);
     }
-    void updatePhone(String uid, final String phone){
+
+    void updatePhone(String uid, final String phone) {
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 user.setPhoneNumber(phone);
                 pushData(user);
             }
-        },uid);
+        }, uid);
     }
-    void updateEmail(String uid, final String email){
+
+    void updateEmail(String uid, final String email) {
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 user.setEmail(email);
                 pushData(user);
             }
-        },uid);
+        }, uid);
     }
-    void updateImage(String uid, final Image img){
+
+    void updateImage(String uid, final Image img) {
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 user.setProfilePic(img);
                 pushData(user);
             }
-        },uid);
+        }, uid);
     }
 
-    void updateApiaryName(String uid, final String aid, final String name){
+    void updateApiaryName(String uid, final String aid, final String name) {
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 List<Apiary> aList = user.getApiaryList();
-                for(int i = 0; i< aList.size(); i++){
-                    if(aList.get(i).getAid().equals(aid)){
+                for (int i = 0; i < aList.size(); i++) {
+                    if (aList.get(i).getAid().equals(aid)) {
                         user.getApiaryList().get(i).setName(name);
                     }
                 }
                 pushData(user);
             }
-        },uid);
+        }, uid);
     }
-    void displayApiaryList(String uid){
+
+    void displayApiaryList(String uid) {
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
@@ -235,32 +312,17 @@ public class MainActivity extends AppCompatActivity {
                 //YOUR CODE HERE TRESSA
                 pushData(user);
             }
-        },uid);
+        }, uid);
     }
 
     static void setProfileImg(String uid, byte[] data) {
 
         Log.d("img", "In setProfileImg");
-        //Firebase Storage for Profile pictures
+
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        // ## Create a Reference
-
-        // [START create_storage_reference]
-        // Create a storage reference from our app
         StorageReference storageRef = storage.getReference();
-        // [END create_storage_reference]
-
-        // [START create_child_reference]
-        // Create a child reference
-        // imagesRef now points to "images"
         StorageReference profileRef = storageRef.child(uid);
-
-
-        // Child references can also take paths
-        // profImgRef now points to "images/space.jpg
-        // imagesRef still points to "images"
         StorageReference profileImgRef = storageRef.child(uid + "/profile_image");
-        // [END create_child_reference]
         Log.d("img", "Reference created: " + profileImgRef);
 
         UploadTask uploadTask = profileImgRef.putBytes(data);
@@ -268,65 +330,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 // Handle unsuccessful uploads
+                Log.d("file", "upload FAILED");
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
                 // ...
+                Log.d("file", "upload SUCCESSFUL");
             }
         });
     }
 
-    static void checkProfileImg(final CheckCallBack ccb, final String uid) {
-
-        Log.d("img", "In checkProfileImg");
-
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-
-
-        // Create a reference to a file from a Google Cloud Storage URI
-        ///Urw3ICjs0edn1hsM7ACFPWDMTeG3/profile_image.jpg
-        StorageReference gsRef = storage.getReferenceFromUrl("gs://beekeeping-83194.appspot.com");
-
-        StorageReference userRef = gsRef.child(uid);
-        final StorageReference picRef = userRef.child("profile_image");
-        Log.d("file", "user: " + userRef);
-        try {
-
-            storage.getReference().list(1, uid).addOnSuccessListener(new OnSuccessListener<ListResult>() {
-                @Override
-                public void onSuccess(ListResult listResult) {
-                    if (listResult.getItems().size() == 1){
-                        picRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                Log.d("file", "success");
-
-                                ccb.onCallback(true);
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception exception) {
-                                Log.d("file", "failed");
-                                // File not found
-                                ccb.onCallback(false);
-                            }
-                        });
-                    }
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d("file", "no results were found under the uid: " + uid);
-                }
-            });
-          //  if ()
-        } catch (Exception se){
-            Log.d("file", se.getMessage());
-        }
-        Log.d("file", "done gettingDownloadURL");
-    }
 
     public static void downloadProfileImg(final ImageCallBack icb, String uid) {
         FirebaseStorage storage = FirebaseStorage.getInstance();

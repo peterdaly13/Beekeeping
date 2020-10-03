@@ -52,7 +52,7 @@ public class Apiary {
 
     public String toString() {
         //String info = "Apiary #" + aid + "manages the following hives: \n";
-        String info = "Apiary #" + aid + "manages " + hives.size() + " hives.";
+        String info = "Apiary #" + aid + "manages " + hives.size() + " hives." + hives.toString();
         return info;
     }
 
