@@ -55,13 +55,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        jump = (Button) findViewById(R.id.jump);
-        jump.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, AddApiaryActivity.class);
-                startActivity(i);
-            }
-        });
+//        jump = (Button) findViewById(R.id.jump);
+//        jump.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent i = new Intent(MainActivity.this, AddApiaryActivity.class);
+//                startActivity(i);
+//            }
+//        });
 
     }
 

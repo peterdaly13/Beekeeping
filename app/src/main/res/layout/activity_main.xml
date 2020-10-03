@@ -9,12 +9,12 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="154dp"
-        android:layout_height="47dp"
-        android:text="BKeeper"
-        android:textAlignment="center"
+        android:layout_width="205dp"
+        android:layout_height="48dp"
+        android:fontFamily="@font/asul_bold"
         android:gravity="center"
-        android:fontFamily="serif"
+        android:text="Beekeeper"
+        android:textAlignment="center"
         android:textColor="@color/colorText"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
