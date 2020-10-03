@@ -9,9 +9,13 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="111dp"
-        android:layout_height="52dp"
-        android:text="MyHive"
+        android:layout_width="154dp"
+        android:layout_height="47dp"
+        android:text="BKeeper"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:fontFamily="serif"
+        android:textColor="@color/colorText"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,15 +24,28 @@
         app:layout_constraintVertical_bias="0.092" />
 
     <Button
-        android:id="@+id/login_button"
-        android:layout_width="189dp"
-        android:layout_height="48dp"
-        android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.816" />
+    android:id="@+id/login_button"
+    android:layout_width="189dp"
+    android:layout_height="48dp"
+    android:text="Login / sign up"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.816" />
+
+<!--    test portal-->
+<!--    <Button-->
+<!--        android:id="@+id/jump"-->
+<!--        android:layout_width="189dp"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:text="test portal"-->
+<!--        android:backgroundTint="@color/colorPrimary"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.912" />-->
 
     <ImageView
         android:id="@+id/imageView2"
@@ -39,7 +56,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498"
+        app:layout_constraintVertical_bias="0.427"
         app:srcCompat="@drawable/ic_bee_fancy" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

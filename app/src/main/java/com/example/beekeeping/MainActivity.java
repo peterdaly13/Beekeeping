@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     Button login_button;
 
+    //jump
+    Button jump;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        jump = (Button) findViewById(R.id.jump);
+        jump.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, AddApiaryActivity.class);
+                startActivity(i);
             }
         });
 
