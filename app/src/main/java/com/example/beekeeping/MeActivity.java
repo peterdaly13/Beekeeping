@@ -19,8 +19,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 public class MeActivity extends AppCompatActivity {
+    int numApiaries = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +30,7 @@ public class MeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_me);
 
         final FirebaseUser FBuser = FirebaseAuth.getInstance().getCurrentUser();
-
-        // if new user, push new user data to DB
         String uid = FBuser.getUid();
-
-
 
         TextView displayName = findViewById(R.id.display_name);
         displayName.setText(FBuser.getDisplayName());
@@ -40,6 +38,7 @@ public class MeActivity extends AppCompatActivity {
         displayEmail.setText(FBuser.getEmail());
         ImageView profilePicture = findViewById(R.id.profile_picture);
 
+        // if new user, push new user data to DB
         MainActivity.pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
@@ -49,6 +48,11 @@ public class MeActivity extends AppCompatActivity {
                 }
             }
         },uid);
+
+
+
+
+
         /*
         URL url = null;
         try {
@@ -82,6 +86,22 @@ public class MeActivity extends AppCompatActivity {
 
 
 
+    }
+
+
+
+    void updateNumApiaries(String uid) {
+        MainActivity.pullData(new DataCallback() {
+            @Override
+            public void onCallback(User user) {
+                List<Apiary> aList = user.getApiaryList();
+                updateNumApiaries(aList);
+            }
+        },uid);
+    }
+
+    void updateNumApiaries(List<Apiary> list) {
+        this.numApiaries = list.size();
     }
 
     public void onLogOutClick() {

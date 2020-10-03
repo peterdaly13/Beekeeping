@@ -140,31 +140,21 @@ public class MainActivity extends AppCompatActivity {
         },uid);
     }
 
-    boolean userExists(String uid) {
-        pullData(new DataCallback() {
-            @Override
-            public void onCallback(User user) {
-
-            }
-        },uid);
-        return false;
-    }
-    /*
-    void updateApiary(String uid, final Apiary a) {
+    void deleteApiary(String uid, final Apiary a) {
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 List<Apiary> aList = user.getApiaryList();
                 for(int i = 0; i < aList.size(); i++){
                     if(aList.get(i).getAid().equals(a.getAid())){
-                        user.getApiaryList().set(i, a);
+                        user.getApiaryList().remove(i);
                     }
                 }
                 pushData(user);
             }
         },uid);
     }
-    */
+
     void updateUsername(String uid, final String name){
         pullData(new DataCallback() {
             @Override

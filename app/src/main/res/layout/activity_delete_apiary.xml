@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddApiaryActivity">
+    tools:context=".DeleteApiaryActivity">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Apiary"
+        android:text="Delete Apiary"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,11 +33,11 @@
         app:layout_constraintVertical_bias="0.376" />
 
     <Button
-        android:id="@+id/create_apiary_button"
+        android:id="@+id/delete_apiary_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Apiary"
-        android:onClick="onCreateApiaryClick"
+        android:onClick="onDeleteApiaryClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

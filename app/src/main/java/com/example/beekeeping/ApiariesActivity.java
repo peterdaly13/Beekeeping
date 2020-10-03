@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,19 +36,31 @@ public class ApiariesActivity extends AppCompatActivity {
         MainActivity.pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
-                List<Apiary> aList = user.getApiaryList();
+                final List<Apiary> aList = user.getApiaryList();
                 List<String> nameList = new ArrayList<String>();
                 for(int i = 0; i< aList.size(); i++){
                     nameList.add(aList.get(i).getName());
                 }
-                ArrayAdapter arrayAdapter = new ArrayAdapter(ApiariesActivity.this, android.R.layout.simple_list_item_1, nameList);
+                ArrayAdapter arrayAdapter = new ArrayAdapter(ApiariesActivity.this,
+                        android.R.layout.simple_list_item_1, nameList);
                 listView.setAdapter(arrayAdapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View v, int i, long l) {
+                        onApiaryClick(aList, i);
+                    }
+                });
             }
         },user.getUid());
     }
 
-    public ArrayList<Apiary> getApiaries(String id) {
-        return null;
+    public void onApiaryClick(List<Apiary> aList, int i) {
+        Toast.makeText(ApiariesActivity.this, "clicked item: " + aList.get(i).name
+                , Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(ApiariesActivity.this, ApiaryActivity.class);
+        intent.putExtra("aid", aList.get(i).aid);
+        startActivity(intent);
+
     }
 
     public void onAddApiaryClick(View v) {

@@ -10,24 +10,21 @@ import android.widget.EditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class AddApiaryActivity extends AppCompatActivity {
+public class DeleteApiaryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_apiary);
+        setContentView(R.layout.activity_delete_apiary);
     }
 
-    public void onCreateApiaryClick(View v) {
-        EditText nameTextField = (EditText) findViewById(R.id.apiary_name_input);
-        String name = nameTextField.getText().toString();
-        Apiary newApiary = new Apiary(name);
+    public void onDeleteApiaryClick(View v) {
+        // somehow select apiary object itself, then MainActivity.deleteApiary(uid, apiary)
         FirebaseUser FBuser = FirebaseAuth.getInstance().getCurrentUser();
         String uid = FBuser.getUid();
-        MainActivity.addApiary(uid, newApiary);
     }
 
     public void onBackToApiariesClick(View v) {
-        startActivity(new Intent(AddApiaryActivity.this, ApiariesActivity.class));
+        startActivity(new Intent(DeleteApiaryActivity.this, ApiariesActivity.class));
     }
 }
