@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import java.util.List;
 
 public class ApiaryActivity extends AppCompatActivity {
     Apiary apiary = null;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,28 @@ public class ApiaryActivity extends AppCompatActivity {
             @Override
             public void onCallback(User user) {
                 final List<Apiary> aList = user.getApiaryList();
-                setApiary(aList, aid);
+                int temp = -1;
+                for(int i = 0; i< aList.size(); i++) {
+                    if (aList.get(i).getAid().equals(aid)) {
+                       temp =i;
+                    }
+                }
+                if(temp != -1) {
+                    final List<Hive> hives = aList.get(temp).getHives();
+                    List<String> nameList = new ArrayList<String>();
+                    for (int i = 0; i < hives.size(); i++) {
+                        nameList.add(hives.get(i).getName());
+                    }
+                    ArrayAdapter arrayAdapter = new ArrayAdapter(ApiaryActivity.this,
+                            android.R.layout.simple_list_item_1, nameList);
+                    listView.setAdapter(arrayAdapter);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View v, int i, long l) {
+                            onHiveClick(hives, i);
+                        }
+                    });
+                }
             }
         },user.getUid());
 
@@ -49,4 +72,15 @@ public class ApiaryActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void onHiveClick(List<Hive> hives, int i) {
+        Toast.makeText(ApiaryActivity.this, "clicked item: " + hives.get(i).name
+                , Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(ApiaryActivity.this, HiveActivity.class);
+        intent.putExtra("hid", hives.get(i).getHiveID());
+        startActivity(intent);
+
+    }
+
+
 }
