@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     Button login_button;
 
+    //jump
+    Button jump;
+
 
 
 
@@ -61,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+//        jump = (Button) findViewById(R.id.jump);
+//        jump.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent i = new Intent(MainActivity.this, AddApiaryActivity.class);
+//                startActivity(i);
+//            }
+//        });
 
     }
 

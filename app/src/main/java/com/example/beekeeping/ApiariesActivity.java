@@ -55,10 +55,8 @@ public class ApiariesActivity extends AppCompatActivity {
     }
 
     public void onApiaryClick(List<Apiary> aList, int i) {
-        Toast.makeText(ApiariesActivity.this, "clicked item: " + aList.get(i).name
-                , Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(ApiariesActivity.this, ApiaryActivity.class);
-        intent.putExtra("aid", aList.get(i).aid);
+        intent.putExtra("aid", aList.get(i).getAid());
         startActivity(intent);
 
     }

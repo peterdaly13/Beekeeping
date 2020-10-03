@@ -4,26 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F4F4F4"
     tools:context=".MainActivity">
 
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="111dp"
-        android:layout_height="52dp"
-        android:text="MyHive"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092" />
 
     <Button
         android:id="@+id/login_button"
         android:layout_width="189dp"
         android:layout_height="48dp"
-        android:text="Login"
+        android:text="Login / sign up"
+        android:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +29,36 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498"
+        app:layout_constraintVertical_bias="0.427"
         app:srcCompat="@drawable/ic_bee_fancy" />
+
+    <!--    test portal-->
+    <!--    <Button-->
+    <!--        android:id="@+id/jump"-->
+    <!--        android:layout_width="189dp"-->
+    <!--        android:layout_height="48dp"-->
+    <!--        android:text="test portal"-->
+    <!--        android:backgroundTint="@color/colorPrimary"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.912" />-->
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="284dp"
+        android:layout_height="63dp"
+        android:fontFamily="@font/asul_bold"
+        android:gravity="center"
+        android:text="Beekeeper"
+        android:textAlignment="center"
+        android:textColor="@color/colorText"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.092" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,26 +20,48 @@ import java.util.List;
 
 public class ApiaryActivity extends AppCompatActivity {
     Apiary apiary = null;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apiary);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
         Intent intent = getIntent();
         final String aid = intent.getStringExtra("aid");
 
+        listView = (ListView) findViewById(R.id.listview);
         MainActivity.pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 final List<Apiary> aList = user.getApiaryList();
-                setApiary(aList, aid);
+                int temp = -1;
+                for(int i = 0; i< aList.size(); i++) {
+                    if (aList.get(i).getAid().equals(aid)) {
+                       temp =i;
+                    }
+                }
+                if(temp != -1) {
+                    final int temp2 = temp;
+                    final List<Hive> hives = aList.get(temp).getHives();
+                    List<String> nameList = new ArrayList<String>();
+                    for (int i = 0; i < hives.size(); i++) {
+                        nameList.add(hives.get(i).getName());
+                    }
+                    ArrayAdapter arrayAdapter = new ArrayAdapter(ApiaryActivity.this,
+                            android.R.layout.simple_list_item_1, nameList);
+                    listView.setAdapter(arrayAdapter);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View v, int i, long l) {
+                            onHiveClick(hives,aid, i);
+                        }
+                    });
+                }
             }
-        },user.getUid());
-
-        TextView displayApiaryName = findViewById(R.id.display_apiary_name);
-       // displayApiaryName.setText(this.apiary.name); ERROR HERE
+        },fUser.getUid());
     }
 
     public void setApiary(List<Apiary> aList, String aid) {
@@ -49,4 +73,14 @@ public class ApiaryActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void onHiveClick(List<Hive> hives, String aid, int hIndex ) {
+        Intent intent = new Intent(ApiaryActivity.this, HiveActivity.class);
+        intent.putExtra("hid", hives.get(hIndex).getHiveID());
+        intent.putExtra("aid", aid);
+        startActivity(intent);
+
+    }
+
+
 }

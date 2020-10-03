@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ApiaryActivity"></activity>
+        <activity android:name=".HiveDetailActivity"></activity>
+        <activity android:name=".HiveActivity" />
+        <activity android:name=".ApiaryActivity" />
         <activity android:name=".AddApiaryActivity" />
         <activity android:name=".ApiariesActivity" />
         <activity android:name=".MeActivity" />
