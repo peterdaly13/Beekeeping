@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.w("PullData", "Failed to Load User from Firebase", databaseError.toException());
             }
         });
+        // Use the uID to access the correct user
+        //   return null;
     }
 
     static void pushData(User user) {
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 user.getApiaryList().add(a);
                 pushData(user);
             }
-        }, uid);
+        },uid);
     }
 
     void addHive(String uid, final String aid, final Hive h) {
@@ -116,15 +118,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCallback(User user) {
                 List<Apiary> aList = user.getApiaryList();
-                for (int i = 0; i < aList.size(); i++) {
-                    if (aList.get(i).getAid().equals(aid)) {
+                for(int i = 0; i < aList.size(); i++){
+                    if(aList.get(i).getAid().equals(aid)){
                         user.getApiaryList().get(i).addHive(h);
                     }
                 }
 
                 pushData(user);
             }
-        }, uid);
+        },uid);
     }
 
     void updateHive(String uid, final String aid, final Hive h) {
@@ -132,11 +134,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCallback(User user) {
                 List<Apiary> aList = user.getApiaryList();
-                for (int i = 0; i < aList.size(); i++) {
-                    if (aList.get(i).getAid().equals(aid)) {
+                for(int i = 0; i < aList.size(); i++){
+                    if(aList.get(i).getAid().equals(aid)){
                         List<Hive> hList = user.getApiaryList().get(i).getHives();
-                        for (int j = 0; j < hList.size(); j++) {
-                            if (hList.get(j).getHiveID().equals(h.getHiveID())) {
+                        for(int j =0; j< hList.size(); j++){
+                            if(hList.get(j).getHiveID().equals(h.getHiveID())){
                                 user.getApiaryList().get(i).getHives().set(j, h);
                             }
                         }
@@ -145,90 +147,76 @@ public class MainActivity extends AppCompatActivity {
 
                 pushData(user);
             }
-        }, uid);
+        },uid);
     }
 
-    boolean userExists(String uid) {
-        pullData(new DataCallback() {
-            @Override
-            public void onCallback(User user) {
-
-            }
-        }, uid);
-        return false;
-    }
-
-    void updateApiary(String uid, final Apiary a) {
+    void deleteApiary(String uid, final Apiary a) {
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 List<Apiary> aList = user.getApiaryList();
-                for (int i = 0; i < aList.size(); i++) {
-                    if (aList.get(i).getAid().equals(a.getAid())) {
-                        user.getApiaryList().set(i, a);
+                for(int i = 0; i < aList.size(); i++){
+                    if(aList.get(i).getAid().equals(a.getAid())){
+                        user.getApiaryList().remove(i);
                     }
                 }
                 pushData(user);
             }
-        }, uid);
+        },uid);
     }
 
-    void updateUsername(String uid, final String name) {
+    void updateUsername(String uid, final String name){
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 user.setName(name);
                 pushData(user);
             }
-        }, uid);
+        },uid);
     }
-
-    void updatePhone(String uid, final String phone) {
+    void updatePhone(String uid, final String phone){
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 user.setPhoneNumber(phone);
                 pushData(user);
             }
-        }, uid);
+        },uid);
     }
-
-    void updateEmail(String uid, final String email) {
+    void updateEmail(String uid, final String email){
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 user.setEmail(email);
                 pushData(user);
             }
-        }, uid);
+        },uid);
     }
-
-    void updateImage(String uid, final Image img) {
+    void updateImage(String uid, final Image img){
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 user.setProfilePic(img);
                 pushData(user);
             }
-        }, uid);
+        },uid);
     }
 
-    void updateApiaryName(String uid, final String aid, final String name) {
+    void updateApiaryName(String uid, final String aid, final String name){
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
                 List<Apiary> aList = user.getApiaryList();
-                for (int i = 0; i < aList.size(); i++) {
-                    if (aList.get(i).getAid().equals(aid)) {
+                for(int i = 0; i< aList.size(); i++){
+                    if(aList.get(i).getAid().equals(aid)){
                         user.getApiaryList().get(i).setName(name);
                     }
                 }
                 pushData(user);
             }
-        }, uid);
+        },uid);
     }
-
-    void displayApiaryList(String uid) {
+    void displayApiaryList(String uid){
         pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
@@ -236,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
                 //YOUR CODE HERE TRESSA
                 pushData(user);
             }
-        }, uid);
+        },uid);
     }
 
     static void setProfileImg(String uid, byte[] data) {
