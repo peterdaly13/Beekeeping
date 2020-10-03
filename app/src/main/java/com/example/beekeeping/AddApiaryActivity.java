@@ -23,6 +23,7 @@ public class AddApiaryActivity extends AppCompatActivity {
         Apiary newApiary = new Apiary(name);
         FirebaseUser FBuser = FirebaseAuth.getInstance().getCurrentUser();
         String uid = FBuser.getUid();
+
         MainActivity.addApiary(uid, newApiary);
     }
 }

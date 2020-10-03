@@ -36,13 +36,17 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Log.d("login", "LoginActivity");
         createSignInIntent();
+        //Maybe here save User to fire
+
     }
 
     /*
         Onclick function which redirects user to their profile
      */
     public void goToProfileOnClick(View view) {
+
         startActivity(new Intent(LoginActivity.this, MeActivity.class));
 
     }
@@ -52,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
      */
     public void createSignInIntent() {
         startActivityForResult( AuthUI.getInstance().createSignInIntentBuilder().build(), RC_SIGN_IN );
-        
+
     }
 
 
