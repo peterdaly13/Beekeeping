@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,10 +27,12 @@ public class ApiaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apiary);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
         Intent intent = getIntent();
         final String aid = intent.getStringExtra("aid");
 
+        listView = (ListView) findViewById(R.id.listview);
         MainActivity.pullData(new DataCallback() {
             @Override
             public void onCallback(User user) {
@@ -57,10 +60,7 @@ public class ApiaryActivity extends AppCompatActivity {
                     });
                 }
             }
-        },user.getUid());
-
-        TextView displayApiaryName = findViewById(R.id.display_apiary_name);
-       // displayApiaryName.setText(this.apiary.name); ERROR HERE
+        },fUser.getUid());
     }
 
     public void setApiary(List<Apiary> aList, String aid) {
@@ -74,8 +74,6 @@ public class ApiaryActivity extends AppCompatActivity {
     }
 
     public void onHiveClick(List<Hive> hives, int i) {
-        Toast.makeText(ApiaryActivity.this, "clicked item: " + hives.get(i).name
-                , Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(ApiaryActivity.this, HiveActivity.class);
         intent.putExtra("hid", hives.get(i).getHiveID());
         startActivity(intent);
