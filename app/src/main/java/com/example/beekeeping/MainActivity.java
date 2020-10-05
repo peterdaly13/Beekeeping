@@ -102,14 +102,15 @@ public class MainActivity extends AppCompatActivity {
     static void checkProfileImg(final CheckCallBack ccb, final String uid) {
 
         Log.d("img", "In checkProfileImg");
+        Log.d("img", uid);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
 
         ///Urw3ICjs0edn1hsM7ACFPWDMTeG3/profile_image.jpg
         StorageReference storageRef = storage.getReference();
         StorageReference userRef = storageRef.child(uid);
-        final StorageReference picRef = storageRef.child(uid).child("profile_image");
-
+        final StorageReference picRef = storageRef.child(uid).child("profile_image.jpg");
+        Log.d("img", picRef.toString());
         picRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -118,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+
+                Log.d("img", "Something went wrong");
                 ccb.onCallback(false);
             }
         });
@@ -273,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
         StorageReference profileRef = storageRef.child(uid);
-        StorageReference profileImgRef = storageRef.child(uid + "/profile_image");
+        StorageReference profileImgRef = storageRef.child(uid + "/profile_image.jpg");
         Log.d("img", "Reference created: " + profileImgRef);
 
         UploadTask uploadTask = profileImgRef.putBytes(data);
@@ -299,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
 
         StorageReference storageRef = storage.getReference();
 
-        StorageReference imageRef = storageRef.child(uid + "/profile_image");
+        StorageReference imageRef = storageRef.child(uid + "/profile_image.jpg");
         Log.d("file", "Downloading profile image");
         final long ONE_MEGABYTE = 1024 * 1024;
         imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
