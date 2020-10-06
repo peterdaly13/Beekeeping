@@ -71,19 +71,6 @@ public class HiveActivity extends AppCompatActivity {
                     }
                     if (temp2 != -1) {
                         Hive h = user.getApiaryList().get(temp).getHives().get(temp2);
-                        /*
-                        name.setText(h.getName());
-                        inspectionResults.setText(h.getInspectionResults());
-                        health.setText(h.getHealth());
-                        honeyStores.setText(h.getHoneyStores());
-                        queenProduction.setText(h.getQueenProduction());
-                        equipmentOnHive.setText(h.getEquipmentOnHive());
-                        equipmentInventory.setText(h.getEquipmentInventory());
-                        losses.setText(h.getLosses());
-                        gains.setText(h.getGains());
-
-                         */
-
                     }
                 }
             }
